@@ -1157,7 +1157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ede7146c9aec40428317a6cd4fcf537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pathHolderList: []
+  m_pathHolderList:
+  - {fileID: 2133280459}
+  - {fileID: 256565403}
   m_losePath: {fileID: 0}
   m_isClosedLoop: 0
   m_isLose: 0
@@ -3102,7 +3104,7 @@ GameObject:
   m_IsActive: 1
 --- !u!95 &5789910334069195986
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3119,8 +3121,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &6001365952708507922
 Transform:
   m_ObjectHideFlags: 0
