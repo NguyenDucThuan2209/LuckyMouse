@@ -7,7 +7,7 @@ using UnityEngine;
 public class GeneratePath : MonoBehaviour
 {
     [SerializeField] List<Transform> m_pathHolderList;
-    [SerializeField] Transform m_losePath;
+    [SerializeField] List<Transform> m_losePathList;
         
     [SerializeField] bool m_isClosedLoop = true;
     [SerializeField] bool m_isLose;
@@ -17,15 +17,32 @@ public class GeneratePath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Get Path's points from path holder
-        var randomPathIndex = Random.Range(0, m_pathHolderList.Count - 1);
-        var pathPoints = GetPath(m_pathHolderList[randomPathIndex]);
+        //ActivePath();
+    }
+
+    public void ActivePath(bool isFinalMouseRun)
+    {
+        int randomPathIndex;
+        Transform[] pathPoints;
+        if (!isFinalMouseRun)
+        {
+            // Get Path's points from path holder
+            randomPathIndex = Random.Range(0, m_pathHolderList.Count - 1);
+            pathPoints = GetPath(m_pathHolderList[randomPathIndex]);
+        }
+        else
+        {
+            // Get Path's points from path holder
+            randomPathIndex = Random.Range(0, m_losePathList.Count - 1);
+            pathPoints = GetPath(m_losePathList[randomPathIndex]);
+        }
+
 
         // Create Bezier path
         BezierPath path = new BezierPath(pathPoints, m_isClosedLoop, PathSpace.xyz);
-
         m_pathCreator = GetComponent<PathCreator>();
-        m_pathCreator.bezierPath = path;        
+        m_pathCreator.bezierPath = path;
+
     }
 
     private Transform[] GetPath(Transform pathHolder)
@@ -38,7 +55,7 @@ public class GeneratePath : MonoBehaviour
             var point = pathHolder.GetChild(i);
             
             pathPoints[i] = point;
-            Debug.Log("Path's point: " + point.name);            
+            //Debug.Log("Path's point: " + point.name);            
         }
 
         return pathPoints;
