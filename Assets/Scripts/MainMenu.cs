@@ -13,9 +13,7 @@ public class MainMenu : MonoBehaviour
 
 	// rlgl
 	[SerializeField]
-	private GameObject homeScreen;
-	[SerializeField]
-	private GameObject createRoomScreen;
+	private GameObject homeScreen;		
 	[SerializeField]
 	private GameObject joinRoomScreen;
 	[SerializeField]
@@ -103,8 +101,7 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (roomId != "" && SocketClient.IS_FIRST_JOIN)
         {
-            homeScreen.SetActive(false);
-            createRoomScreen.SetActive(false);
+            homeScreen.SetActive(false);       
             joinRoomScreen.SetActive(true);
             lobbyScreen.SetActive(false);
 
@@ -116,7 +113,6 @@ public class MainMenu : MonoBehaviour
         else
         {
             homeScreen.SetActive(true);
-            createRoomScreen.SetActive(false);
             joinRoomScreen.SetActive(false);
             lobbyScreen.SetActive(false);
         }
@@ -201,8 +197,7 @@ public class MainMenu : MonoBehaviour
         lobbyScreen.GetComponent<LobbyScreen>().SetTotalPlayer(player.ToString());
     }
     public void ShowLobby()
-    {
-        createRoomScreen.SetActive(false);
+    {    
         homeScreen.SetActive(false);
         joinRoomScreen.SetActive(false);
         lobbyScreen.SetActive(true);
@@ -228,7 +223,7 @@ public class MainMenu : MonoBehaviour
         //RoomId.text = "Room ID : " +  roomId;
         isHost = "1";
         //JoinRoom();
-        createRoomScreen.SetActive(true);
+        lobbyScreen.SetActive(true);
         homeScreen.SetActive(false);
     }
     public void UserJoinRoom()
@@ -269,8 +264,7 @@ public class MainMenu : MonoBehaviour
         OnClickVfx();
 
         homeScreen.SetActive(true);
-        joinRoomScreen.SetActive(false);
-        createRoomScreen.SetActive(false);
+        joinRoomScreen.SetActive(false);        
         lobbyScreen.SetActive(false);
     }
 
@@ -300,8 +294,7 @@ public class MainMenu : MonoBehaviour
     public void BackToMainMenu()
     {
         homeScreen.SetActive(true);
-        joinRoomScreen.SetActive(false);
-        createRoomScreen.SetActive(false);
+        joinRoomScreen.SetActive(false);        
         lobbyScreen.SetActive(false);
         lobbyScreen.GetComponent<LobbyScreen>().ResetAvatarList();
         SocketClient.instance.OnCloseConnectSocket();
