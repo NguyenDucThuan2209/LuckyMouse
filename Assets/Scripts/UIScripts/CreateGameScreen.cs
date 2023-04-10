@@ -42,24 +42,6 @@ namespace UIElements
         }
         #endregion
 
-        #region ChoosePlayMode
-        public void OnChoosePlayerMode(bool isMen)
-        {
-            if (isMen)
-            {
-                MainMenu.instance.gender = "0";
-                m_chooseRingButton.gameObject.SetActive(true);
-                m_chooseRingButton.transform.position = m_menPlayerButton.transform.position;
-            }
-            else
-            {
-                MainMenu.instance.gender = "1";
-                m_chooseRingButton.gameObject.SetActive(true);
-                m_chooseRingButton.transform.position = m_womenPlayerButton.transform.position;
-            }
-        }
-        #endregion
-
         #region PlayerAmountInputEvent
         public void OnInputFieldSelected()
         {
