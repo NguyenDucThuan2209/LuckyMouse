@@ -74,6 +74,11 @@ namespace PathCreation.Examples
                     SocketClient.instance.OnRequestNextRun();
                     triggerSendRequest = true;
                 }
+                else
+                {
+                    Debug.Log(" Mouse final run ");
+                    SocketClient.instance.OnEndGame();
+                }
                 isActivePath = false;
             }
 

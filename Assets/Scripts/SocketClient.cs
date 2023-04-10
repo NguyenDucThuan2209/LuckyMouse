@@ -33,7 +33,7 @@ public class SocketClient : MonoBehaviour
 
     [SerializeField]
     private string url = "";
-    static string baseUrl = "ws://localhost";
+    static string baseUrl = "ws://192.168.1.39";
     static string HOST = "8083";
 
     //static string baseUrl = "wss://rlgl2-api.brandgames.vn";
@@ -259,11 +259,12 @@ public class SocketClient : MonoBehaviour
 
                 players = JArray.Parse(data["players"].ToString());
                 player = GameObject.Find("Hamster");
-                OnStartGame();
+                //OnStartGame();
 
                 break;
             case "startGame":
                 Debug.Log("  startGame =================  " + data);
+                GameManager.instance.ReadyPlayGame();
                 if (isSpectator)
                 {
                     // code spectator screen here
@@ -281,11 +282,17 @@ public class SocketClient : MonoBehaviour
             
             case "responseNextRun":
                 Debug.Log("  requestNextRun data ==========  " + data);
-
+                JObject playerRun = JObject.Parse(data["playerRun"].ToString());
+                Debug.Log("  requestNextRun playerRun  ========== " + playerRun["playerName"].ToString());
                 if (clientId == data["playerRunId"].ToString())
                 {
+                    GameManager.instance.PlayerRuning();
                     bool isFinalRun = data["isFinalRun"].ToString() == "1";
                     player.GetComponent<PathFollower>().ActivePath(isFinalRun);
+                }
+                else
+                {
+                    GameManager.instance.CurrentPlayerRuning(playerRun);
                 }
                 break;
 
@@ -303,42 +310,12 @@ public class SocketClient : MonoBehaviour
             case "endGame":
                 Debug.Log("  endGame data ==========  " + data);
                 players = JArray.Parse(data["players"].ToString());
-                JArray sortedJArray = new JArray(players.OrderByDescending(j => j["timeWin"]));
-                Debug.Log("  sortedJArray data ==========  " + sortedJArray);
-                int indexPlayerEnd = 0;
-                if (isSpectator)
-                {
-                    // code spectator screen here
-                    for (int i = 0; i < sortedJArray.Count; i++)
-                    {
-                        if (sortedJArray[i]["isSpectator"].ToString() == "0")
-                        {
-                            indexPlayerEnd++;
-                            //player.GetComponent<PlayerMovement>().AddPlayerResult(players[i]["playerName"].ToString(), players[i]["playerStatus"].ToString(), i);
-                        }
-
-                    }
-
-                }
-                else
-                {
-                    for (int i = 0; i < sortedJArray.Count; i++)
-                    {
-                        if(sortedJArray[i]["isSpectator"].ToString() == "0")
-                        {
-                           
-                            indexPlayerEnd++;
-                            //player.GetComponent<PlayerMovement>().AddPlayerResult(players[i]["playerName"].ToString(), players[i]["playerStatus"].ToString(), i);
-                        }
-
-                    }
-
-                }
-                
+                JObject playerWin = JObject.Parse(data["playerWin"].ToString());
+                GameManager.instance.ShowEndGameScreen(playerWin);
+                               
                 break;
             case "playerLeaveRoom":
                 string playerLeaveId = data["clientId"].ToString();
-
 
                 for (int i = 0; i < players.Count; i++)
                 {
