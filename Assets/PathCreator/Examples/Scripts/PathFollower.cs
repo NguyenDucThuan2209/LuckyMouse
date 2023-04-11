@@ -18,7 +18,14 @@ namespace PathCreation.Examples
         bool triggerSendRequest = false;
         void Start()
         {
-            SocketClient.instance.OnJoinRoom();
+            if (SocketClient.instance == null)
+            {
+                ActivePath(false);
+            }
+            else
+            {
+                SocketClient.instance.OnJoinRoom();
+            }            
         }
         public void ActivePath(bool _isFinalMouseRun)
         {
