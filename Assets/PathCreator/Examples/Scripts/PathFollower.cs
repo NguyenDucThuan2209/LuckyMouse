@@ -18,23 +18,20 @@ namespace PathCreation.Examples
         bool triggerSendRequest = false;
         void Start()
         {
-            SocketClient.instance.OnJoinRoom();
+            if (SocketClient.instance == null)
+            {
+                ActivePath(false);
+            }
+            else
+            {
+                SocketClient.instance.OnJoinRoom();
+            }            
         }
         public void ActivePath(bool _isFinalMouseRun)
         {
-            isFinalMouseRun = _isFinalMouseRun;
-            pathObject = GameObject.Find("PathCreator");
-            if (pathObject != null)
-            {
-                generatePath = pathObject.GetComponent<GeneratePath>();
-                if (generatePath != null)
-                {
-                    generatePath.ActivePath(_isFinalMouseRun);
-                }
-                pathCreator = pathObject.GetComponent<PathCreator>();
-                SetPathChanged();
-
-            }
+            isFinalMouseRun = _isFinalMouseRun;            
+            generatePath.ActivePath(_isFinalMouseRun);            
+            SetPathChanged();            
         }
 
         void SetPathChanged()
