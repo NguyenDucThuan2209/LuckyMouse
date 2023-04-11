@@ -387,10 +387,10 @@ public class SocketClient : MonoBehaviour
         Debug.Log("  MainMenu.instance.gender gender   " + MainMenu.instance.gender);
         string playerName = MainMenu.instance.playerName;
 
-        if (playerName.Length <= 1)
-        {
-            playerName = "anonymous";
-        }
+        //if (playerName.Length <= 1)
+        //{
+        //    playerName = "anonymous";
+        //}
 
         JObject jsData = new JObject();
         jsData.Add("meta", "joinLobby");
@@ -415,10 +415,10 @@ public class SocketClient : MonoBehaviour
         Debug.Log(" OnJoinRoom ==================  " );
         string playerName = MainMenu.instance.playerName;
 
-        if (playerName.Length <= 1 )
-        {
-            playerName = "anonymous";
-        }
+        //if (playerName.Length <= 1 )
+        //{
+        //    playerName = "anonymous";
+        //}
 
         //clientPosStart = RandomPosition();
 
@@ -466,7 +466,6 @@ public class SocketClient : MonoBehaviour
 
     public void OnEndGame()
     {
-        if (!isHost) return;
         JObject jsData = new JObject();
         jsData.Add("meta", "endGame");
         jsData.Add("clientId", clientId);
