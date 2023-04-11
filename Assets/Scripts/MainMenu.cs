@@ -11,8 +11,10 @@ public class MainMenu : MonoBehaviour
 {
 	public static MainMenu instance;
 
-	// rlgl
-	[SerializeField]
+    string[] playerNames = new string[] { "Alice", "Bob", "Charlie", "Peter", 
+        "Phan Cao", "Yến", "Ngoãn", "Thi","Đạt", "Thuận", "Tuệ", "Díu" };
+
+    [SerializeField]
 	private GameObject homeScreen;		
 	[SerializeField]
 	private GameObject joinRoomScreen;
@@ -39,7 +41,7 @@ public class MainMenu : MonoBehaviour
 	public static string deepLinkZaloApp = "https://zalo.me/s/543482719351051682/";
 	public string userAppId = "";
 	public string userAvatar = "https://h5.zdn.vn/static/images/avatar.png";
-	public string playerName = "anonymous";
+	public string playerName = "";
 	public string roomId = "";
 	public string isHost = "0";
 	public string gender = "0";
@@ -106,7 +108,7 @@ public class MainMenu : MonoBehaviour
             lobbyScreen.SetActive(false);
 
             inputRoomId.text = roomId;
-            //JoinRoom();
+            JoinRoom();
             gameObject.GetComponent<JoinGameScreen>().SetTextInputRoomId(roomId);
             UserJoinRoom();
         }
@@ -180,6 +182,8 @@ public class MainMenu : MonoBehaviour
         if (playerName.Length <= 1)
         {
             playerName = "anonymous";
+            //int rand = UnityEngine.Random.Range(0, playerNames.Length);
+            //playerName = playerNames[rand];
         }
 
         SocketClient.instance.OnConnectWebsocket();
@@ -222,7 +226,7 @@ public class MainMenu : MonoBehaviour
         roomId = Generate();
         //RoomId.text = "Room ID : " +  roomId;
         isHost = "1";
-        //JoinRoom();
+        JoinRoom();
         lobbyScreen.SetActive(true);
         homeScreen.SetActive(false);
     }
