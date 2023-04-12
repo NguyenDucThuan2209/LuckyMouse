@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI textRunning;
     // end game
     [SerializeField] GameObject endGameObject;
+    [SerializeField] UnityEngine.UI.RawImage playerPicture;
     [SerializeField] TMPro.TextMeshProUGUI textPlayerWin;
     void Awake()
     {
@@ -71,13 +73,30 @@ public class GameManager : MonoBehaviour
 
     public void ShowEndGameScreen(Newtonsoft.Json.Linq.JObject playerWin)
     {
-        runningObject.SetActive(false);
+        runningObject.SetActive(false);        
         textPlayerWin.text = playerWin["playerName"].ToString() + " is winning !!!";
+        StartCoroutine(SetPlayerImage(playerWin["avatar"].ToString()));            
         endGameObject.SetActive(true);
     }
 
     public void BackToMM()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator SetPlayerImage(string imageUrl)
+    {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl);
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Texture2D textureImageUrl = ((DownloadHandlerTexture)request.downloadHandler).texture;
+            playerPicture.texture = textureImageUrl;
+        }
+        else
+        {
+            Debug.Log(request.error);
+        }
     }
 }
