@@ -28,14 +28,6 @@ public class MainMenu : MonoBehaviour
 	[SerializeField] TMPro.TextMeshProUGUI m_notificationText;
 
 	[SerializeField]
-	AudioSource bg_Music;
-	[SerializeField]
-	private AudioSource bg_Win;
-	[SerializeField]
-	private AudioSource bg_Die;
-	[SerializeField]
-	private AudioSource vfx_click;
-	[SerializeField]
 	private TMPro.TMP_InputField inputRoomId;
 
 	public static string deepLinkZaloApp = "https://zalo.me/s/543482719351051682/";
@@ -59,11 +51,7 @@ public class MainMenu : MonoBehaviour
 
 	public GameObject[] characters;
 	public int selectedCharacter = 0;
-	public GameObject Starts;
-	public GameObject Unlock;
-	public AudioClip Click;
-	public AudioClip StartSound;
-	public AudioSource AudioSource;
+
     private void Awake()
     {
 		if (instance == null)
@@ -73,7 +61,8 @@ public class MainMenu : MonoBehaviour
 	}
     private void Start()
     {
-		//SocketClient.instance.OnConnectWebsocket();
+        //SocketClient.instance.OnConnectWebsocket();
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.MenuBackground);
 		listPlayerAvatars = new Dictionary<string, Texture2D>();
 		StartCoroutine(WaitingReceiver());
 	}
@@ -117,9 +106,7 @@ public class MainMenu : MonoBehaviour
             homeScreen.SetActive(true);
             joinRoomScreen.SetActive(false);
             lobbyScreen.SetActive(false);
-        }
-
-        //bg_Music.Play(0);
+        }        
     }
     private void Update()
     {
@@ -171,7 +158,7 @@ public class MainMenu : MonoBehaviour
     }
     public void JoinRoom()
     {
-        OnClickVfx();
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
 
         if (joinRoomScreen.activeSelf)
         {
@@ -214,14 +201,13 @@ public class MainMenu : MonoBehaviour
     }
     public void GotoGame()
     {
-        OnClickVfx();
-
-        //bg_Music.Stop();
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
+        
         SceneManager.LoadScene("Game");
     }
     public void HostCreateNewRoom()
     {
-        OnClickVfx();
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
 
         roomId = Generate();
         //RoomId.text = "Room ID : " +  roomId;
@@ -232,7 +218,7 @@ public class MainMenu : MonoBehaviour
     }
     public void UserJoinRoom()
     {
-        OnClickVfx();
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.JoinRoom);
 
         roomId = inputRoomId.text;
         joinRoomScreen.SetActive(true);
@@ -241,7 +227,7 @@ public class MainMenu : MonoBehaviour
     }
     public void SpectatorJoinRoom()
     {
-        OnClickVfx();
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.JoinRoom);
         Debug.Log(" ===== SpectatorJoinRoom==== ");
         roomId = inputRoomId.text;
         joinRoomScreen.SetActive(true);
@@ -265,7 +251,7 @@ public class MainMenu : MonoBehaviour
 
     public void FailToJoinRoom()
     {
-        OnClickVfx();
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
 
         homeScreen.SetActive(true);
         joinRoomScreen.SetActive(false);        
@@ -306,37 +292,32 @@ public class MainMenu : MonoBehaviour
 
     public void ShareLinkToInvite()
     {
-        OnClickVfx();
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
         JavaScriptInjected.instance.SendRequestShareRoom();
-    }
-
-    public void OnClickVfx()
-    {
-        vfx_click.Play();
     }
     public void NextCharacter()
 	{
 		characters[selectedCharacter].SetActive(false);
 		selectedCharacter = (selectedCharacter + 1) % characters.Length;
 		characters[selectedCharacter].SetActive(true);
-		//if(selectedCharacter!=0)
-  //      {
-		//	Starts.SetActive(false);
-		//	Unlock.SetActive(true);
+        //if(selectedCharacter!=0)
+        //      {
+        //	Starts.SetActive(false);
+        //	Unlock.SetActive(true);
 
-		//}else
-  //      {
-		//	Starts.SetActive(true);
-		//	Unlock.SetActive(false);
-		//}
-		AudioSource.PlayOneShot(Click);
-	}
+        //}else
+        //      {
+        //	Starts.SetActive(true);
+        //	Unlock.SetActive(false);
+        //}
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
+    }
 
-	public void PreviousCharacter()
+    public void PreviousCharacter()
 	{
-		AudioSource.PlayOneShot(Click);
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
 
-		characters[selectedCharacter].SetActive(false);
+        characters[selectedCharacter].SetActive(false);
 		selectedCharacter--;
 		if (selectedCharacter < 0)
 		{
@@ -359,10 +340,10 @@ public class MainMenu : MonoBehaviour
     {
 
 #if UNITY_EDITOR
-		AudioSource.PlayOneShot(StartSound);
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.JoinRoom);
 
-		//PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
-		SceneManager.LoadScene("Game");
+        //PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
+        SceneManager.LoadScene("Game");
 #endif
 		//SocketClient.instance.OnGotoGame();
 	}
@@ -371,9 +352,9 @@ public class MainMenu : MonoBehaviour
 	{
 		SocketClient.instance.OnConnectWebsocket();
 		//SocketClient.instance.OnGotoGame();
-		AudioSource.PlayOneShot(StartSound);
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.JoinRoom);
 
-		//PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
-		SceneManager.LoadScene("Game");
+        //PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
+        SceneManager.LoadScene("Game");
 	}
 }

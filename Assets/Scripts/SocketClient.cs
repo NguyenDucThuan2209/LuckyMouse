@@ -243,7 +243,7 @@ public class SocketClient : MonoBehaviour
                 // for old player
                 else
                 {
-                    
+
                     if (data["isSpectator"].ToString() == "0")
                         StartCoroutine(LoadAvatarImage(data["avatar"].ToString(), data["clientId"].ToString()));
                 }
@@ -263,6 +263,8 @@ public class SocketClient : MonoBehaviour
 
                 break;
             case "startGame":
+                SoundManager.Instance.StopSound(SoundManager.SoundType.MenuBackground);
+                SoundManager.Instance.PlaySound(SoundManager.SoundType.IngameBackground);
                 Debug.Log("  startGame =================  " + data);
                 GameManager.instance.ReadyPlayGame();
                 if (isSpectator)
@@ -279,7 +281,7 @@ public class SocketClient : MonoBehaviour
 
                 }
                 break;
-            
+
             case "responseNextRun":
                 Debug.Log("  requestNextRun data ==========  " + data);
                 JObject playerRun = JObject.Parse(data["playerRun"].ToString());
@@ -289,9 +291,11 @@ public class SocketClient : MonoBehaviour
                     GameManager.instance.PlayerRuning();
                     bool isFinalRun = data["isFinalRun"].ToString() == "1";
                     player.GetComponent<PathFollower>().ActivePath(isFinalRun);
+                    SoundManager.Instance.PlaySound(SoundManager.SoundType.Mouse);
                 }
                 else
                 {
+                    SoundManager.Instance.StopSound(SoundManager.SoundType.Mouse);
                     GameManager.instance.CurrentPlayerRuning(playerRun);
                 }
                 break;
@@ -312,7 +316,9 @@ public class SocketClient : MonoBehaviour
                 players = JArray.Parse(data["players"].ToString());
                 JObject playerWin = JObject.Parse(data["playerWin"].ToString());
                 GameManager.instance.ShowEndGameScreen(playerWin);
-                               
+
+                SoundManager.Instance.StopSound(SoundManager.SoundType.Mouse);
+                // Play win lose sound depend on playerID
                 break;
             case "playerLeaveRoom":
                 string playerLeaveId = data["clientId"].ToString();

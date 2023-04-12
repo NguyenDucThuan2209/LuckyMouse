@@ -42,6 +42,7 @@ namespace UIElements
         }
         public void ShowPlayerJoinRoom(string _playerName)
         {
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.JoinRoom);
             SetPlayerJoin(_playerName);
             StartCoroutine(FadeIn());
         }
@@ -128,11 +129,13 @@ namespace UIElements
         }
         public void OnStartGame()
         {
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
             MainMenu.instance.JoinTheGame();
         }
         public void OnExitScreen()
         {
-             MainMenu.instance.BackToMainMenu();
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
+            MainMenu.instance.BackToMainMenu();
         }
 
         private Texture2D GetQRCodeTexture(string text, int width, int height)
