@@ -11535,8 +11535,8 @@ MonoBehaviour:
   runningObject: {fileID: 2137435998}
   textRunning: {fileID: 154638332}
   endGameObject: {fileID: 113306211}
-  playPicture: {fileID: 0}
-  textPlayerWin: {fileID: 0}
+  playerPicture: {fileID: 547498229}
+  textPlayerWin: {fileID: 1139404175}
 --- !u!1 &1866258104
 GameObject:
   m_ObjectHideFlags: 0
@@ -14213,7 +14213,7 @@ GameObject:
   m_IsActive: 1
 --- !u!95 &5789910334069195986
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14230,7 +14230,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &6001365952708507922
 Transform:
   m_ObjectHideFlags: 0
