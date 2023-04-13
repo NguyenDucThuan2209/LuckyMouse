@@ -317,9 +317,13 @@ public class SocketClient : MonoBehaviour
                 JObject playerWin = JObject.Parse(data["playerWin"].ToString());
                 GameManager.instance.ShowEndGameScreen(playerWin);
 
-                SoundManager.Instance.StopSound(SoundManager.SoundType.Mouse);
-                // Play win lose sound depend on playerID
+                SoundManager.Instance.StopAllSounds();
+
+                // Always play Win sound when game ended
+                SoundManager.Instance.PlaySound(SoundManager.SoundType.Win);
+
                 break;
+            
             case "playerLeaveRoom":
                 string playerLeaveId = data["clientId"].ToString();
 
