@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         runningObject.SetActive(false);
         endGameObject.SetActive(false);
         startGameObject.SetActive(true);
@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
 
     public void BackToMM()
     {
+        SoundManager.Instance.StopAllSounds();
         SceneManager.LoadScene("MainMenu");
     }
 
