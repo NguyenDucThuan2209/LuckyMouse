@@ -20,10 +20,12 @@ namespace UIElements
 
         public void CreateRoom()
         {
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
             MainMenu.instance.HostCreateNewRoom();
         }
         public void JoinRoom()
         {
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
             MainMenu.instance.UserJoinRoom();
         }
         public void SpectatorJoinRoom()

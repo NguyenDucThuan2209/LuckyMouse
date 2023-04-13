@@ -206,9 +206,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
     public void HostCreateNewRoom()
-    {
-        SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
-
+    {        
         roomId = Generate();
         //RoomId.text = "Room ID : " +  roomId;
         isHost = "1";
