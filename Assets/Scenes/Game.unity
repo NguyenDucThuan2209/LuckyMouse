@@ -32,10 +32,10 @@ RenderSettings:
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
@@ -70,7 +70,7 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
-    m_ReflectionCompression: 2
+    m_ReflectionCompression: 1
     m_MixedBakeMode: 2
     m_BakeBackend: 1
     m_PVRSampling: 1
@@ -840,13 +840,13 @@ GameObject:
   - component: {fileID: 113306212}
   - component: {fileID: 113306214}
   - component: {fileID: 113306213}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EndGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &113306212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1034,7 +1034,7 @@ GameObject:
   - component: {fileID: 154638331}
   - component: {fileID: 154638333}
   - component: {fileID: 154638332}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextRunning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1168,7 +1168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162611634}
   - component: {fileID: 162611633}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Hamster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1204,8 +1204,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 484638411382267560}
+  - {fileID: 769136558}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &172254755
 GameObject:
@@ -1675,13 +1676,13 @@ GameObject:
   - component: {fileID: 225612200}
   - component: {fileID: 225612202}
   - component: {fileID: 225612201}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: StartPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &225612200
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2293,7 +2294,7 @@ GameObject:
   - component: {fileID: 266475739}
   - component: {fileID: 266475741}
   - component: {fileID: 266475740}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Winner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2828,7 +2829,7 @@ GameObject:
   - component: {fileID: 334696126}
   - component: {fileID: 334696128}
   - component: {fileID: 334696127}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3212,7 +3213,7 @@ GameObject:
   - component: {fileID: 421480960}
   - component: {fileID: 421480962}
   - component: {fileID: 421480961}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3568,7 +3569,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &529505597
 GameObject:
@@ -3582,7 +3583,7 @@ GameObject:
   - component: {fileID: 529505601}
   - component: {fileID: 529505600}
   - component: {fileID: 529505599}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BackToMM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3798,7 +3799,7 @@ GameObject:
   - component: {fileID: 547498228}
   - component: {fileID: 547498230}
   - component: {fileID: 547498229}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3872,7 +3873,7 @@ GameObject:
   - component: {fileID: 564441094}
   - component: {fileID: 564441093}
   - component: {fileID: 564441092}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: StartGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4171,7 +4172,7 @@ GameObject:
   - component: {fileID: 581388673}
   - component: {fileID: 581388675}
   - component: {fileID: 581388674}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4967,7 +4968,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
@@ -5120,6 +5121,100 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734257015}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &769136557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 769136558}
+  - component: {fileID: 769136559}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &769136558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769136557}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -15.5, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 162611634}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!108 &769136559
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769136557}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 5
+  m_Range: 20
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 2800000, guid: 1ce2b5264ebb0214fb996cddfad3c873, type: 3}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 119
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &773435001
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,7 +5309,7 @@ GameObject:
   - component: {fileID: 782082402}
   - component: {fileID: 782082404}
   - component: {fileID: 782082403}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextWating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5349,7 +5444,7 @@ GameObject:
   - component: {fileID: 783175133}
   - component: {fileID: 783175135}
   - component: {fileID: 783175134}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ResultBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6590,11 +6685,11 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
+    m_Bits: 2147483647
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -6616,10 +6711,9 @@ Transform:
   m_LocalPosition: {x: -55, y: 34.8, z: 35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1858171208}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 30, y: 90, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -7085,7 +7179,7 @@ Transform:
   - {fileID: 1452222400}
   - {fileID: 142228331}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1033341545
 GameObject:
@@ -7596,7 +7690,7 @@ GameObject:
   - component: {fileID: 1139404174}
   - component: {fileID: 1139404176}
   - component: {fileID: 1139404175}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11425,7 +11519,7 @@ GameObject:
   - component: {fileID: 1858171210}
   - component: {fileID: 1858171209}
   - component: {fileID: 1858171212}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11447,8 +11541,8 @@ RectTransform:
   - {fileID: 225612200}
   - {fileID: 2137435999}
   - {fileID: 113306212}
-  m_Father: {fileID: 963194228}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12295,7 +12389,7 @@ GameObject:
   - component: {fileID: 1979883125}
   - component: {fileID: 1979883127}
   - component: {fileID: 1979883126}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13344,7 +13438,7 @@ GameObject:
   - component: {fileID: 2137435999}
   - component: {fileID: 2137436001}
   - component: {fileID: 2137436000}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaitPlayerRunning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13582,7 +13676,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1119244453239747425}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Joint_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13598,7 +13692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2104561544668088064}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13614,7 +13708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4260290771381025870}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Joint_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13630,7 +13724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2823254870070832927}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_trai_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13646,7 +13740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6613695144188799691}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_trai_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13663,7 +13757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484638411382267560}
   - component: {fileID: 5789910334069195986}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13695,7 +13789,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5182615325050284355}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_phai_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13711,7 +13805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2326233390832695454}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13727,7 +13821,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2468402686571079124}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_phai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13760,7 +13854,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8959641194727494667}
   - component: {fileID: 2714315653515325036}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Hamster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13819,7 +13913,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -604316626302413864, guid: 51d700f824571064b9bbc2c1000d40c6, type: 3}
+  - {fileID: 2100000, guid: f42a4b8f3447729408349693604167cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13907,7 +14001,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6664302331877445192}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_trai_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13923,7 +14017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6555196688019861189}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_trai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13939,7 +14033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7847556587717380906}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13955,7 +14049,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 204161421963222031}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_phai_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13987,7 +14081,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7204106913823907954}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14003,7 +14097,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8158799397670079721}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_trai_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14019,7 +14113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 22193212414246853}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_trai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14128,7 +14222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6201270957313834865}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Joint_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14144,7 +14238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3898498349526211917}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_phai_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14204,7 +14298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8656256239608203395}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_trai_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14256,7 +14350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3493732190053446964}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_phai_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14288,7 +14382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 325792338051631992}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_phai_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14320,7 +14414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 56465828190220896}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_trai_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14336,7 +14430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5496570962087721515}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Null
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14443,7 +14537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7787711649413242888}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_trai_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14475,7 +14569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6070146492116515572}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_phai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14491,7 +14585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4565057544714322167}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_trai_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14569,7 +14663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4396612643970498477}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_trai_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14585,7 +14679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4396234579474788505}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_phai_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14617,7 +14711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6001365952708507922}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_phai_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14633,7 +14727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4240561605727339444}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_sau_phai_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14698,7 +14792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859323588263788918}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: chan_trc_phai_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
