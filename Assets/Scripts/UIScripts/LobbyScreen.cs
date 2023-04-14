@@ -55,7 +55,7 @@ namespace UIElements
         {
             if (_totalPlayer == "") return;
 
-            string text = "Tổng số người đã tham gia: " + _totalPlayer.ToString() + " người";
+            string text = "Tổng số người đã tham gia: " + _totalPlayer.ToString();
             m_totalPlayerAmountText.text = text;            
 
             if (int.Parse(_totalPlayer) > m_avatarsCountLimit)
