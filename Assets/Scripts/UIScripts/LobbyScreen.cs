@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using ZXing;
 using ZXing.QrCode;
 using System.Collections;
+using DG.Tweening;
 
 namespace UIElements
 {
@@ -26,8 +27,11 @@ namespace UIElements
         float fadeTime = 1f; // Set the time it takes to fade in and out                
         float defaultHolderSize = 800f;
         private List<GameObject> avatarsLists;
-        private Dictionary<string, int> m_playerAvatarsDict;       
-        
+        private Dictionary<string, int> m_playerAvatarsDict;
+
+        [SerializeField] RectTransform _panel;
+        Sequence _sequence;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -37,6 +41,20 @@ namespace UIElements
 
             string qrCoreGen = MainMenu.deepLinkZaloApp + "?roomId="+ MainMenu.instance.roomId;
             m_qrImage.texture = GetQRCodeTexture(qrCoreGen, 256, 256);
+
+            _sequence = DOTween.Sequence();
+            _sequence.SetAutoKill(false);
+            _sequence.Append(_panel.DOScale(1, 0.2f).SetEase(Ease.InOutBounce));
+        }
+        void OnDestroy()
+        {
+            _sequence.Kill();
+        }
+
+        void OnEnable()
+        {
+            _sequence.Restart();
+
         }
         public void ShowPlayerJoinRoom(string _playerName)
         {

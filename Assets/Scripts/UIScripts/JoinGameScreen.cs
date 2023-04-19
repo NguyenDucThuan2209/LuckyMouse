@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,17 +10,34 @@ namespace UIElements
         [SerializeField] TMP_InputField m_inputField;
         [SerializeField] TextMeshProUGUI m_notificationText;        
 
-        [SerializeField]
         private string m_roomIDEntered;
         public string RoomIDEntered => m_roomIDEntered;
         private TouchScreenKeyboard m_touchScreenKeyboard;
-        
+
+        [SerializeField] RectTransform _gameTitle, _inputCanvas, _exitBtn, _acceptBtn;
+
+        Sequence _sequence;
         // Start is called before the first frame update
         void Start()
         {
+            _sequence = DOTween.Sequence();
+            _sequence.SetAutoKill(false);
+            _sequence.Append(_gameTitle.DOAnchorPos(new Vector2(0, -300f), 0.1f).SetEase(Ease.InOutBounce))
+                .Append(_inputCanvas.DOScale(1, 0.2f).SetEase(Ease.InOutBounce))
+                .Append(_exitBtn.DOAnchorPos(new Vector2(-275f, 200f), 0.1f))
+                .Append(_acceptBtn.DOAnchorPos(new Vector2(275f, 200f), 0.1f));
 
         }
+        void OnDestroy()
+        {
+            _sequence.Kill();
+        }
 
+        void OnEnable()
+        {
+            _sequence.Restart();
+
+        }
         // Update is called once per frame
         void Update()
         {

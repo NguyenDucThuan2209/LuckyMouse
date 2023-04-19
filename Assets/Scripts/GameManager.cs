@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject endGameObject;
     [SerializeField] UnityEngine.UI.RawImage playerPicture;
     [SerializeField] TMPro.TextMeshProUGUI textPlayerWin;
+    [SerializeField] RectTransform _endGamePanel;
+    [SerializeField] RectTransform _replayBtn;
+    Sequence _sequence;
     void Awake()
     {
         if (instance == null)
@@ -43,6 +47,9 @@ public class GameManager : MonoBehaviour
             textWating.text = "Wating for host start the game!";
             startButton.SetActive(false);
         }
+        _sequence = DOTween.Sequence();
+        _sequence.Append(textWating.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 0.1f).SetEase(Ease.InOutBounce))
+            .Append(startButton.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, -537f), 0.1f).SetEase(Ease.InOutBounce));
     }
 
     // Update is called once per frame
@@ -77,6 +84,8 @@ public class GameManager : MonoBehaviour
         textPlayerWin.text = playerWin["playerName"].ToString() + " is winning !!!";
         StartCoroutine(SetPlayerImage(playerWin["avatar"].ToString()));            
         endGameObject.SetActive(true);
+        _endGamePanel.DOScale(1, 0.2f).SetEase(Ease.InOutBounce);
+        _replayBtn.DOAnchorPos(new Vector2(0f, -537f), 0.1f);
     }
 
     public void BackToMM()
