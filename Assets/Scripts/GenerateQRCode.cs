@@ -8,8 +8,8 @@ public class GenerateQRCode : MonoBehaviour
 
     void Start()
     {
-        string qrCode = MainMenu.instance.roomId;
-        Texture2D qrCodeTexture = GenerateQRCodeTexture(qrCode, 256, 256);
+        string qrCoreGen = MainMenu.deepLinkZaloApp + "?roomId=" + MainMenu.instance.roomId;
+        Texture2D qrCodeTexture = GenerateQRCodeTexture(qrCoreGen, 256, 256);
         //GetComponent<Renderer>().material.mainTexture = qrCodeTexture;
         GetComponent<UnityEngine.UI.RawImage>().texture = qrCodeTexture;
     }
