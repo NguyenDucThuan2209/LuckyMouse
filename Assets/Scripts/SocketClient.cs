@@ -17,7 +17,6 @@ using NativeWebSocket;
 using Random = UnityEngine.Random;
 using System.Linq;
 using UnityEngine.SceneManagement;
-using PathCreation.Examples;
 //using System.Globalization;
 
 public class SocketClient : MonoBehaviour
