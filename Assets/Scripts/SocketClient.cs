@@ -336,10 +336,8 @@ public class SocketClient : MonoBehaviour
                             if (players[i]["isSpectator"].ToString() == "0")
                             {
                                 MainMenu.instance.RemovePlayerJoinRoomByAvatar(playerLeaveId);
-                            }
-                            MainMenu.instance.ShowTotalPlayers(players.Count);
+                            }                            
                         }
-
                         players.RemoveAt(i);
                         Debug.Log(" players playerLeaveRoom 222222222222222  " + playerLeaveId);
 

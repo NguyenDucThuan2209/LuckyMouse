@@ -73,8 +73,9 @@ namespace UIElements
         {
             if (_totalPlayer == "") return;
 
+            Debug.LogWarning("Total player update: " + _totalPlayer);
             string text = "Tổng số người đã tham gia: " + _totalPlayer.ToString();
-            m_totalPlayerAmountText.text = text;            
+            m_totalPlayerAmountText.text = text;
 
             if (int.Parse(_totalPlayer) > m_avatarsCountLimit)
             {
@@ -124,6 +125,8 @@ namespace UIElements
 
             m_playerAvatarsDict.Remove(playerId);
             avatarsLists.RemoveAt(index);
+
+            SetTotalPlayer(avatarsLists.Count.ToString());            
         }
 
         public void ResetAvatarList()
