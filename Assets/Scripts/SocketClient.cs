@@ -347,6 +347,17 @@ public class SocketClient : MonoBehaviour
 
                 break;
             
+            case "newRuningId":                
+                // check new run 
+                string checkNewRunning = data["playerRunningId"].ToString();
+
+                if (checkNewRunning != "" && checkNewRunning == clientId)
+                {
+                    OnRequestNextRun();
+                }
+                Debug.Log("NEW RUNNING ID" + checkNewRunning);
+                break;
+
             case "playerLeaveRoom":
                 string playerLeaveId = data["clientId"].ToString();
 
