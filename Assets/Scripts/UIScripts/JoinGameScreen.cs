@@ -85,6 +85,11 @@ namespace UIElements
             }
 
         }
+
+        public void OnInputValueChanged(TextMeshProUGUI _currentInput)
+        {
+            m_inputField.caretPosition = _currentInput.text.Length;
+        }
         public void SetTextInputRoomId(string _roomId)
         {
             m_inputField.text = _roomId;
