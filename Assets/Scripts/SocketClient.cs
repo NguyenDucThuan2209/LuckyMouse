@@ -57,10 +57,6 @@ public class SocketClient : MonoBehaviour
     [SerializeField]
     private GameObject spectatorPrefab;
 
-    private bool m_isApplicationFocus;
-    private float m_timeCount = 0f;
-    private const float LostFocusTimeout = 30f;
-
     void Awake()
     {
         if (instance == null)
@@ -82,24 +78,6 @@ public class SocketClient : MonoBehaviour
         if (webSocket!=null)
             webSocket.DispatchMessageQueue();
 #endif
-
-        if (Application.isMobilePlatform)
-        {
-            if (m_isApplicationFocus)
-            {
-                m_timeCount = 0;
-            }
-            else
-            {
-                m_timeCount += Time.deltaTime;
-                if (m_timeCount > LostFocusTimeout)
-                {
-                    OnCloseConnectSocket();
-                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-                    Debug.LogWarning("Lost focus! Time out: " + m_timeCount);
-                }
-            }
-        }
     }
 
     async void OnDestroy()
@@ -112,10 +90,7 @@ public class SocketClient : MonoBehaviour
 
         Debug.Log("WebSocket closed.");
     }
-    private void OnApplicationFocus(bool focus)
-    {
-        m_isApplicationFocus = focus;
-    }
+
     public void OnConnectWebsocket()
     {
         url = baseUrl + ":" + HOST;
