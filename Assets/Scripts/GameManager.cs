@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,12 +39,12 @@ public class GameManager : MonoBehaviour
         startGameObject.SetActive(true);
         if (SocketClient.instance.isHost)
         {
-            textWating.text = "Ready to start the game!";
+            textWating.text = "Sẵn sàng để bắt đầu trò chơi!";
             startButton.SetActive(true);
         } 
         else
         {
-            textWating.text = "Wating for host start the game!";
+            textWating.text = "Chờ chủ phòng bắt đầu trò chơi!";
             startButton.SetActive(false);
         }
         _sequence = DOTween.Sequence();
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     public void CurrentPlayerRuning(Newtonsoft.Json.Linq.JObject playerRun)
     {
         runningObject.SetActive(true);
-        textRunning.text = playerRun["playerName"].ToString() + " is running!!!";
+        textRunning.text = "Chú chuột đang chạy ở nhà của " + playerRun["playerName"].ToString() + "!!!";
     }
 
     public void PlayerRuning()
@@ -80,10 +80,13 @@ public class GameManager : MonoBehaviour
 
     public void ShowEndGameScreen(Newtonsoft.Json.Linq.JObject playerWin)
     {
-        runningObject.SetActive(false);        
-        textPlayerWin.text = playerWin["playerName"].ToString() + " is winning !!!";
-        StartCoroutine(SetPlayerImage(playerWin["avatar"].ToString()));            
+        runningObject.SetActive(false);
         endGameObject.SetActive(true);
+        StartCoroutine(SetPlayerImage(playerWin["avatar"].ToString()));
+
+        var resultText = (playerWin["id"].ToString() == SocketClient.instance.clientId) ? "Bạn đã thắng !!!" : playerWin["playerName"].ToString() + " đã thắng !!!";
+        textPlayerWin.text = resultText;
+
         _endGamePanel.DOScale(1, 0.2f).SetEase(Ease.InOutBounce);
         _replayBtn.DOAnchorPos(new Vector2(0f, -537f), 0.1f);
     }
