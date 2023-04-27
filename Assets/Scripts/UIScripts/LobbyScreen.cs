@@ -72,8 +72,7 @@ namespace UIElements
         public void SetTotalPlayer(string _totalPlayer)
         {
             if (_totalPlayer == "") return;
-
-            Debug.LogWarning("Total player update: " + _totalPlayer);
+            
             string text = "Tổng số người đã tham gia: " + _totalPlayer.ToString();
             m_totalPlayerAmountText.text = text;
 
