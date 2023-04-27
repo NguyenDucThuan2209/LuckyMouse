@@ -257,6 +257,8 @@ public class SocketClient : MonoBehaviour
 
                 players = JArray.Parse(data["players"].ToString());
                 player = GameObject.Find("Hamster");
+
+                player.GetComponent<PathFollower>().speed = Mathf.Max(700 / (30f / players.Count), 100f); 
                 //OnStartGame();
 
                 break;
