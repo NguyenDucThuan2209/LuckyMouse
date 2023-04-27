@@ -25,9 +25,10 @@ public class PathFollower : MonoBehaviour
     }
     public void ActivePath(bool _isFinalMouseRun)
     {
-        isFinalMouseRun = _isFinalMouseRun;            
-        generatePath.ActivePath(_isFinalMouseRun);            
-        SetPathChanged();            
+        gameObject.SetActive(true);
+        isFinalMouseRun = _isFinalMouseRun;
+        generatePath.ActivePath(_isFinalMouseRun);
+        SetPathChanged();
     }
 
     void SetPathChanged()
@@ -62,6 +63,7 @@ public class PathFollower : MonoBehaviour
                 SocketClient.instance.OnEndGame();
             }
             isActivePath = false;
+            gameObject.SetActive(false);
         }
     }
     void OnPathChanged() {
