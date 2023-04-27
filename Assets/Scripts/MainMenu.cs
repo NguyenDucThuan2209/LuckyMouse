@@ -202,8 +202,15 @@ public class MainMenu : MonoBehaviour
     public void GotoGame()
     {
         SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
-        
-        SceneManager.LoadScene("Game");
+
+        if (isSpectator == "0")
+        {
+            SceneManager.LoadScene("Game");
+        }
+        else
+        {
+            SceneManager.LoadScene("Spectator");
+        }        
     }
     public void HostCreateNewRoom()
     {        
