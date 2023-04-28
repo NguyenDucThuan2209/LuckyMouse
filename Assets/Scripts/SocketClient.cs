@@ -322,6 +322,9 @@ public class SocketClient : MonoBehaviour
                 // Always play Win sound when game ended
                 SoundManager.Instance.PlaySound(SoundManager.SoundType.Win);
 
+                // send tracking cdp
+                OnRequestEventCDP();
+
                 break;
             
             case "newRuningId":                
@@ -420,6 +423,8 @@ public class SocketClient : MonoBehaviour
         jsData.Add("playerName", playerName);
         jsData.Add("userAppId", MainMenu.instance.userAppId);
         jsData.Add("avatar", MainMenu.instance.userAvatar);
+        jsData.Add("phoneNumber", MainMenu.instance.phoneNumber);
+        jsData.Add("followedOA", MainMenu.instance.followedOA);
         Send(Newtonsoft.Json.JsonConvert.SerializeObject(jsData));
     }
     public void OnGotoGame()
@@ -463,7 +468,14 @@ public class SocketClient : MonoBehaviour
         jsData.Add("room", ROOM);
         Send(Newtonsoft.Json.JsonConvert.SerializeObject(jsData).ToString());
     }
-  
+    public void OnRequestEventCDP()
+    {
+        JObject jsData = new JObject();
+        jsData.Add("meta", "eventCDP");
+        jsData.Add("room", ROOM);
+        Send(Newtonsoft.Json.JsonConvert.SerializeObject(jsData).ToString());
+    }
+
     public void OnPlayerDie()
     {
         Debug.Log(" ======================== OnPlayerDie() ======================================");
