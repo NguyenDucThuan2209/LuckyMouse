@@ -7,8 +7,9 @@ namespace UIElements
 {
     public class JoinGameScreen : Screen
     {
-        [SerializeField] TMP_InputField m_inputField;
-        [SerializeField] TextMeshProUGUI m_notificationText;        
+        [SerializeField] Slider m_spectatorSlider;
+        [SerializeField] TMP_InputField m_inputField;        
+        [SerializeField] TextMeshProUGUI m_notificationText;   
 
         private string m_roomIDEntered;
         public string RoomIDEntered => m_roomIDEntered;
@@ -96,6 +97,7 @@ namespace UIElements
         }
         public void OnJoinRoom()
         {
+            MainMenu.instance.isSpectator = m_spectatorSlider.value.ToString();
             MainMenu.instance.JoinRoom();
         }
         public void OnUseQRScan()

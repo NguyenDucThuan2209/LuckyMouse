@@ -67,7 +67,6 @@ public class PathFollower : MonoBehaviour
         }
     }
     void OnPathChanged() {
-        distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
-            
+        distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);            
     }
 }
