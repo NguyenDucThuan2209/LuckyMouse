@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpectatorLuckyMouse : MonoBehaviour
-{
-    [SerializeField] TMPro.TextMeshProUGUI m_currentRunner;
+{    
     [SerializeField] GameObject m_clientHousePrefab;
     [SerializeField] int m_totalPlayer;
 
     private List<ClientHouse> m_clientList = new List<ClientHouse>();
+    private ClientHouse m_previousClientHouse;
     private PathFollower m_pathfollower;
     private const float RADIUS = 100f;
     private bool m_isSetupDone = false;
@@ -62,22 +62,29 @@ public class SpectatorLuckyMouse : MonoBehaviour
         }
     }
     public void SetNewRunner(Newtonsoft.Json.Linq.JObject currentRunner)
-    {
-        Debug.LogWarning(currentRunner["playerName"].ToString() + " is the target!");
+    {        
         for (int i = 0; i < m_clientList.Count; i++)
         {
             if (currentRunner["playerName"].ToString() == m_clientList[i].ClientHouseName)
-            {
-                Debug.LogWarning(m_clientList[i].ClientHouseName + " has a mouse!");
+            {     
                 m_clientList[i].OnMouseGoingToHouse();
+
+                if (m_previousClientHouse == null)
+                {
+                    var startPoint = new GameObject("startPoint");
+                    startPoint.transform.position = Vector3.zero;
+                    m_pathfollower.ActivePath(new Transform[] { startPoint.transform, m_clientList[i].FontHousePoint, m_clientList[i].transform });                    
+                }
+                else
+                {
+                    m_pathfollower.ActivePath(new Transform[] { m_previousClientHouse.transform, m_previousClientHouse.FontHousePoint, m_clientList[i].FontHousePoint, m_clientList[i].transform });     
+                }
+                m_previousClientHouse = m_clientList[i];
             }
             else
-            {
-                Debug.LogWarning(m_clientList[i].ClientHouseName + " wait for mouse!");
+            {            
                 m_clientList[i].OnMouseNotInHouse();
-            }
-            Debug.LogWarning(currentRunner["playerName"].ToString() + "|" + m_clientList[i].ClientHouseName + "|" + (m_clientList[i].ClientHouseName == currentRunner["playerName"].ToString()));
-        }
-        Debug.LogWarning("===========END OF ROUND==========");
+            }            
+        }        
     }
 }
