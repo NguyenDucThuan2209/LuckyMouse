@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] RectTransform _endGamePanel;
     [SerializeField] RectTransform _replayBtn;
 
+    public bool IsGameEnded
+    {
+        get;
+        set;
+    }
     private Sequence _sequence;
 
     void Awake()
@@ -92,6 +97,7 @@ public class GameManager : MonoBehaviour
     #region UI
     public void ShowEndGameScreen(Newtonsoft.Json.Linq.JObject playerWin)
     {
+        IsGameEnded = true;
         runningObject.SetActive(false);
         endGameObject.SetActive(true);
         StartCoroutine(SetPlayerImage(playerWin["avatar"].ToString()));              
@@ -113,6 +119,7 @@ public class GameManager : MonoBehaviour
 
     public void BackToMM()
     {
+        IsGameEnded = false;
         SoundManager.Instance.StopAllSounds();
         SceneManager.LoadScene("MainMenu");
     }
