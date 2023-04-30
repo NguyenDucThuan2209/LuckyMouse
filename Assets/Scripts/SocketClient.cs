@@ -254,16 +254,20 @@ public class SocketClient : MonoBehaviour
 
             case "joinRoom":
                 players = JArray.Parse(data["players"].ToString());
-                player = GameObject.Find("Hamster");
+                var tryToFindHamster = GameObject.Find("Hamster");
 
-                if (MainMenu.instance.isSpectator == "1")
+                if (tryToFindHamster != null)
                 {
-                    player.GetComponent<SpectatorLuckyMouse>().SpawnClientHouse(players);
-                }
-                else
-                {
-                    player.GetComponent<PathFollower>().speed = Mathf.Clamp(700 / (30f / players.Count), 50f, 150f);
-                }                
+                    player = tryToFindHamster;
+                    if (MainMenu.instance.isSpectator == "1")
+                    {
+                        player.GetComponent<SpectatorLuckyMouse>().SpawnClientHouse(players);
+                    }
+                    else
+                    {
+                        player.GetComponent<PathFollower>().speed = Mathf.Clamp(700 / (30f / players.Count), 50f, 150f);
+                    }
+                }                                                
                 //OnStartGame();
                 break;
 
