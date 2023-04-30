@@ -366,6 +366,8 @@ public class SocketClient : MonoBehaviour
                 break;
 
             case "playerLeaveRoom":
+                if (GameManager.instance.IsGameEnded) break;
+
                 string playerLeaveId = data["clientId"].ToString();
 
                 for (int i = 0; i < players.Count; i++)
