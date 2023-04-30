@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         else
         {            
             _endGamePanel.Find("WinnerAura").gameObject.SetActive(false);
-            textPlayerWin.text = playerWin["playerName"].ToString() + "là người được chọn !!!";
+            textPlayerWin.text = playerWin["playerName"].ToString() + " là người được chọn !!!";
         }
 
         _endGamePanel.DOScale(1, 0.2f).SetEase(Ease.InOutBounce);
