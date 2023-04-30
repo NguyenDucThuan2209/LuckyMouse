@@ -9,6 +9,7 @@ public class PathFollower : MonoBehaviour
     public float speed = 5;
     float distanceTravelled;
 
+    bool isSpectator = false;
     bool isActivePath = false;
     bool isFinalMouseRun = false;
     bool triggerSendRequest = false;
@@ -22,6 +23,14 @@ public class PathFollower : MonoBehaviour
         {
             SocketClient.instance.OnJoinRoom();
         }            
+    }
+
+    public void ActivePath(Transform[] pointList)
+    {
+        isSpectator = true;
+        gameObject.SetActive(true);
+        generatePath.ActivePath(pointList);
+        SetPathChanged();
     }
     public void ActivePath(bool _isFinalMouseRun)
     {
@@ -52,7 +61,11 @@ public class PathFollower : MonoBehaviour
         }
         if(distanceTravelled >= pathCreator.path.length)
         {
-            if (!isFinalMouseRun && !triggerSendRequest)
+            if (isSpectator)
+            {
+                distanceTravelled = 0f;
+            }
+            else if (!isFinalMouseRun && !triggerSendRequest)
             {
                 distanceTravelled = 0f;
                 SocketClient.instance.OnRequestNextRun();
