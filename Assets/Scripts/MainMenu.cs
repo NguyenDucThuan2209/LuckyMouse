@@ -31,10 +31,12 @@ public class MainMenu : MonoBehaviour
 	private TMPro.TMP_InputField inputRoomId;
 
 	public static string deepLinkZaloApp = "https://zalo.me/s/512606311101007876/";
-	public string userAppId = "";
-	public string userAvatar = "https://h5.zdn.vn/static/images/avatar.png";
-	public string playerName = "";
-	public string roomId = "";
+    public string userAppId = "3368637342326461234";
+    public string userAvatar = "https://h5.zdn.vn/static/images/avatar.png";
+    public string playerName = "User Name";
+    public string phoneNumber = "";
+    public string followedOA = "0"; // 0 : false , 1 : true
+    public string roomId = "";
 	public string isHost = "0";
 	public string gender = "0";
 	public string isSpectator = "0";
