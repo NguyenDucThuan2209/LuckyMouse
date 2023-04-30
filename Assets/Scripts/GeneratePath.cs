@@ -20,6 +20,14 @@ public class GeneratePath : MonoBehaviour
         //ActivePath();
     }
 
+    public void ActivePath(Transform[] pointList)
+    {
+        // Create Bezier path
+        BezierPath path = new BezierPath(pointList, m_isClosedLoop, PathSpace.xyz);
+        m_pathCreator = GetComponent<PathCreator>();
+        m_pathCreator.bezierPath = path;
+    }
+
     public void ActivePath(bool isFinalMouseRun)
     {
         int randomPathIndex;
@@ -36,7 +44,6 @@ public class GeneratePath : MonoBehaviour
             randomPathIndex = Random.Range(0, m_losePathList.Count - 1);
             pathPoints = GetPath(m_losePathList[randomPathIndex]);
         }
-
 
         // Create Bezier path
         BezierPath path = new BezierPath(pathPoints, m_isClosedLoop, PathSpace.xyz);

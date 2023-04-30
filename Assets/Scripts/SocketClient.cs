@@ -254,11 +254,21 @@ public class SocketClient : MonoBehaviour
                 MainMenu.instance.GotoGame();
                 break;
             case "joinRoom":
-
                 players = JArray.Parse(data["players"].ToString());
-                player = GameObject.Find("Hamster");
+                var tryToFindHamster = GameObject.Find("Hamster");
 
-                player.GetComponent<PathFollower>().speed = Mathf.Clamp(700 / (30f / players.Count), 50f, 150f);
+                if (tryToFindHamster != null)
+                {
+                    player = tryToFindHamster;
+                    if (MainMenu.instance.isSpectator == "1")
+                    {
+                        player.GetComponent<SpectatorLuckyMouse>().SpawnClientHouse(players);
+                    }
+                    else
+                    {
+                        player.GetComponent<PathFollower>().speed = Mathf.Clamp(700 / (30f / players.Count), 50f, 150f);
+                    }
+                }
                 //OnStartGame();
 
                 break;
@@ -286,17 +296,34 @@ public class SocketClient : MonoBehaviour
                 Debug.Log("  requestNextRun data ==========  " + data);
                 JObject playerRun = JObject.Parse(data["playerRun"].ToString());
                 Debug.Log("  requestNextRun playerRun  ========== " + playerRun["playerName"].ToString());
-                if (clientId == data["playerRunId"].ToString())
+
+                if (MainMenu.instance.isSpectator == "1")
                 {
-                    GameManager.instance.PlayerRuning();
-                    bool isFinalRun = data["isFinalRun"].ToString() == "1";
-                    player.GetComponent<PathFollower>().ActivePath(isFinalRun);
-                    SoundManager.Instance.PlaySound(SoundManager.SoundType.Mouse);
+                    if (clientId == data["playerRunId"].ToString())
+                    {
+                        OnRequestNextRun();
+                    }
+                    else
+                    {
+                        player.GetComponent<SpectatorLuckyMouse>().SetNewRunner(playerRun);
+                    }
                 }
                 else
                 {
-                    SoundManager.Instance.StopSound(SoundManager.SoundType.Mouse);
-                    GameManager.instance.CurrentPlayerRuning(playerRun);
+                    if (clientId == data["playerRunId"].ToString())
+                    {
+                        GameManager.instance.SetPlayerRunning(data["isFinalRun"].ToString() == "1");
+                        SoundManager.Instance.PlaySound(SoundManager.SoundType.Mouse);
+                    }
+                    else
+                    {
+                        SoundManager.Instance.StopSound(SoundManager.SoundType.Mouse);
+                        if (playerRun["isSpectator"].ToString() == "0")
+                        {
+                            GameManager.instance.ShowOtherPlayerRunning(playerRun);
+                        }
+
+                    }
                 }
                 break;
 

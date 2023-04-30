@@ -43,8 +43,9 @@ public class MainMenu : MonoBehaviour
 	//public Dictionary<string, GameObject> listPlayers;
 	public Dictionary<string, Texture2D> listPlayerAvatars;
 
-	//private const string CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	private const string CHARS = "0123456789";
+    //private const string CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private const string NAMECHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private const string CHARS = "0123456789";
 	public int length = 6;
 
 	TouchScreenKeyboard myKeyboard;
@@ -60,6 +61,8 @@ public class MainMenu : MonoBehaviour
 			instance = this;
 		else if (instance != this)
 			Destroy(gameObject);
+
+        playerName = NAMECHARS[UnityEngine.Random.Range(0, NAMECHARS.Length)].ToString();
 	}
     private void Start()
     {
@@ -168,7 +171,7 @@ public class MainMenu : MonoBehaviour
         }
         RoomId.text = roomId;
 
-        if (playerName.Length <= 1)
+        if (playerName.Length < 1)
         {
             playerName = "anonymous";
             //int rand = UnityEngine.Random.Range(0, playerNames.Length);
