@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpectatorLuckyMouse : MonoBehaviour
 {    
+    [SerializeField] TMPro.TextMeshProUGUI m_currentPlayerText;
+    [SerializeField] RawImage m_currentPlayerAvatar;
     [SerializeField] GameObject m_clientHousePrefab;
     [SerializeField] int m_totalPlayer;
 
     private List<ClientHouse> m_clientList = new List<ClientHouse>();
     private ClientHouse m_previousClientHouse;
     private PathFollower m_pathfollower;
-    private const float RADIUS = 100f;
+    private const float RADIUS = 200f;
     private bool m_isSetupDone = false;
 
     // Start is called before the first frame update
     void Start()
     {
         m_pathfollower = GetComponent<PathFollower>();
+        m_pathfollower = GetComponent<PathFollower>();        
     }
 
     // Update is called once per frame
@@ -63,9 +67,11 @@ public class SpectatorLuckyMouse : MonoBehaviour
     }
     public void SetNewRunner(Newtonsoft.Json.Linq.JObject currentRunner)
     {        
+        m_currentPlayerAvatar.texture = GameManager.ListPlayerAvatars[currentRunner["id"].ToString()];
+        GameManager.instance.ShowOtherPlayerRunning(currentRunner);
         for (int i = 0; i < m_clientList.Count; i++)
         {
-            if (currentRunner["playerName"].ToString() == m_clientList[i].ClientHouseName)
+            if (currentRunner["userAppId"].ToString() == m_clientList[i].ClientID)
             {     
                 m_clientList[i].OnMouseGoingToHouse();
 
