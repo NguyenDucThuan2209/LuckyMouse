@@ -241,13 +241,23 @@ public class SocketClient : MonoBehaviour
                 // for old player
                 else
                 {
-
+                    for (int i = 0; i < players.Count; i++)
+                    {                        
+                        if (players[i]["isSpectator"].ToString() == "0")
+                        {
+                            countUserPlay++;                            
+                        }
+                        else
+                        {
+                            countSpectator++;
+                        }
+                    }
                     if (data["isSpectator"].ToString() == "0")
                         StartCoroutine(LoadAvatarImage(data["avatar"].ToString(), data["clientId"].ToString()));
                 }
 
                 MainMenu.instance.ShowPlayerJoinRoom(data["playerName"].ToString());
-                MainMenu.instance.ShowTotalPlayers(players.Count);
+                MainMenu.instance.ShowTotalPlayers(countUserPlay);
 
                 break;
             case "gotoGame":
@@ -366,7 +376,13 @@ public class SocketClient : MonoBehaviour
                 break;
 
             case "playerLeaveRoom":
-                if (GameManager.instance.IsGameEnded) break;
+                if (GameManager.instance != null)
+                {
+                    if (GameManager.instance.IsGameEnded)
+                    {
+                        break;
+                    }
+                }
 
                 string playerLeaveId = data["clientId"].ToString();
 
