@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] RectTransform _endGamePanel;
     [SerializeField] RectTransform _replayBtn;
 
+    public static Dictionary<string, Texture2D> ListPlayerAvatars = new Dictionary<string, Texture2D>();
+
     public bool IsGameEnded
     {
         get;
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
     public void ShowOtherPlayerRunning(Newtonsoft.Json.Linq.JObject playerRun)
     {
         runningObject.SetActive(true);
-        textRunning.text = "Chú chuột đang chạy ở nhà của " + playerRun["playerName"].ToString() + "!!!";
+        textRunning.text = "Đang ở nhà của " + playerRun["playerName"].ToString() + "!!!";
     }
     public void SetPlayerRunning(bool isFinalRun)
     {

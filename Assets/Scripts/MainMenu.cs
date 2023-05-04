@@ -40,8 +40,7 @@ public class MainMenu : MonoBehaviour
 	public string isHost = "0";
 	public string gender = "0";
 	public string isSpectator = "0";
-	//public Dictionary<string, GameObject> listPlayers;
-	public Dictionary<string, Texture2D> listPlayerAvatars;
+	//public Dictionary<string, GameObject> listPlayers;	
 
     //private const string CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";    
     private const string CHARS = "0123456789";
@@ -64,8 +63,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         //SocketClient.instance.OnConnectWebsocket();
-        SoundManager.Instance.PlaySound(SoundManager.SoundType.MenuBackground);
-		listPlayerAvatars = new Dictionary<string, Texture2D>();
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.MenuBackground);		
 		StartCoroutine(WaitingReceiver());
 	}
 
@@ -270,17 +268,18 @@ public class MainMenu : MonoBehaviour
     {
         if (avatar != null)
         {
-            listPlayerAvatars.Add(playerID, avatar);
+            GameManager.ListPlayerAvatars.Add(playerID, avatar);
             lobbyScreen.GetComponent<LobbyScreen>().SetAvatarForPlayer(avatar, playerID);
         }
     }
     public void ResetAvatarList()
     {
-        listPlayerAvatars = new Dictionary<string, Texture2D>();
+        GameManager.ListPlayerAvatars = new Dictionary<string, Texture2D>();
 
     }
     public void RemovePlayerJoinRoomByAvatar(string playerID)
     {
+        GameManager.ListPlayerAvatars.Remove(playerID);
         lobbyScreen.GetComponent<LobbyScreen>().RemoveAvatarForPlayer(playerID);
     }
 
