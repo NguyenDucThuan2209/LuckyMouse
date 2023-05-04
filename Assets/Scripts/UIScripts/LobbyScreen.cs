@@ -134,6 +134,7 @@ namespace UIElements
             }
             avatarsLists.Clear();
             m_playerAvatarsDict.Clear();
+            MainMenu.instance.ResetAvatarList();
             m_playerAvatarsHolder.sizeDelta = new Vector2(defaultHolderSize, m_playerAvatarsHolder.sizeDelta.y);
         }
         public void SetRoomID(string roomID)
