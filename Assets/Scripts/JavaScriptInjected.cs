@@ -53,7 +53,7 @@ public class JavaScriptInjected : MonoBehaviour
         
         if(url == "")
         {
-            url = "https://rlgl2.brandgames.vn/?roomId=&userAppId=3368637342326461234&userName=User%20Name&userAvatar=https://h5.zdn.vn/static/images/avatar.png&phoneNumber=&followedOA=1";
+            url = "https://rlgl2.brandgames.vn/?roomId=&userAppId=3368637342326461234&userName=User%20Name&userAvatar=https://h5.zdn.vn/static/images/avatar.png&phoneNumber=&followedOA=1&deepLink=";
             Debug.Log("url: =================================   " + url);
         }
         // Parse the URL parameters
@@ -102,6 +102,15 @@ public class JavaScriptInjected : MonoBehaviour
                     if (key == "followedOA")
                     {
                         MainMenu.instance.followedOA = value;
+                    }
+                    if (key == "deepLink")
+                    {
+                        if (value != "")
+                        {
+                            Debug.Log("deepLink ==========  " + value);
+                            MainMenu.deepLinkZaloApp = value;
+                        }
+
                     }
                 }
             }
