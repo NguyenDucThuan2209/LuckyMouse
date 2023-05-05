@@ -360,7 +360,7 @@ public class SocketClient : MonoBehaviour
                 SoundManager.Instance.PlaySound(SoundManager.SoundType.Win);
 
                 // send tracking cdp
-                OnRequestEventCDP();
+                OnRequestEventCDP(data["clientId"].ToString());
 
                 break;
             
@@ -513,11 +513,12 @@ public class SocketClient : MonoBehaviour
         jsData.Add("room", ROOM);
         Send(Newtonsoft.Json.JsonConvert.SerializeObject(jsData).ToString());
     }
-    public void OnRequestEventCDP()
+    public void OnRequestEventCDP(string _playerWinId)
     {
         JObject jsData = new JObject();
         jsData.Add("meta", "eventCDP");
         jsData.Add("room", ROOM);
+        jsData.Add("playerWinId", _playerWinId);
         Send(Newtonsoft.Json.JsonConvert.SerializeObject(jsData).ToString());
     }
 
