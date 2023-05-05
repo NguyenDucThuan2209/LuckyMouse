@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
 	[SerializeField]
 	private TMPro.TMP_InputField inputRoomId;
 
-	public static string deepLinkZaloApp = "https://zalo.me/s/512606311101007876/";
+	public static string deepLinkZaloApp = "https://zalo.me/s/1815405890614446178/";
     public string userAppId = "3368637342326461234";
     public string userAvatar = "https://h5.zdn.vn/static/images/avatar.png";
     public string playerName = "User Name";
